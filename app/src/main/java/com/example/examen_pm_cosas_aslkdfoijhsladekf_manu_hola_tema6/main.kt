@@ -7,8 +7,14 @@ fun main(){
     var listaVideojuegos = listOf(
         Videojuego("The Kore Gang", "Wii", 2010),
         Videojuego("Super Mario Bros Wii", "Wii", 2009),
-        Videojuego("Super Mario Galaxy", "Wii", 2010)
+        Videojuego("Super Mario Galaxy", "Wii", 2010),
+        Videojuego("Rayman", "Play Station", 1995),
+        Videojuego("Tekken", "Play Station", 1994)
     )
+
+    println(mapaJuegos(listaVideojuegos).forEach{
+        println(it.toString())
+    })
 
     var listaEquipoFutbol = listOf(
         EquipoFutbol("Barcelona", "Espania"),
