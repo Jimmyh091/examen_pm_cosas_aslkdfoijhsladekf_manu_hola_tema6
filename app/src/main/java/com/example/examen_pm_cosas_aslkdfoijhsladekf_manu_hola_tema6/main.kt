@@ -12,9 +12,9 @@ fun main(){
         Videojuego("Tekken", "Play Station", 1994)
     )
 
-    println(mapaJuegos(listaVideojuegos).forEach{
-        println(it.toString())
-    })
+//    println(mapaJuegos(listaVideojuegos).forEach{
+//        println(it.toString())
+//    })
 
     var listaEquipoFutbol = listOf(
         EquipoFutbol("Barcelona", "Espania"),
@@ -35,6 +35,7 @@ fun main(){
         EquipoFutbol("Tigre", "Argentina"),
     )
 
+    championsLeage(listaEquipoFutbol)
 }
 
 fun filtraJuegos(lista : List<Videojuego>, anio : Int) : List<Videojuego>{
@@ -118,17 +119,29 @@ fun championsLeage(lista : List<EquipoFutbol>){
 
     var res : MutableList<EquipoFutbol> = mutableListOf()
 
+    var listaNumUsados : MutableList<Int> = mutableListOf()
+
     for (it in 0 until lista.size step 2){
 
-        var equipo1 = lista.get(it)
-        var equipo2 = lista.get(it + 1)
+        var equipo1 = 0
+        var equipo2 = 0
+
+        do {
+            equipo1 = (0..lista.size - 1).random()
+        } while (equipo1 in listaNumUsados)
+        listaNumUsados.add(equipo1)
+
+        do {
+            equipo2 = (0..lista.size - 1).random()
+        } while (equipo2 in listaNumUsados)
+        listaNumUsados.add(equipo2)
 
         val numAleatorio = Math.random()
 
-        res.add(if (numAleatorio >= 0.5) equipo1 else equipo2)
+        res.add(if (numAleatorio >= 0.5) lista[equipo1] else lista[equipo2])
     }
 
     res.forEach{
-        print("Gano ${it.nombre}")
+        println("Gano ${it.nombre}")
     }
 }
