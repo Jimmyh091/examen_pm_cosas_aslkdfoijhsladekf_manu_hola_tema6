@@ -9,6 +9,12 @@ class Circulo (radio : Float = 0f, var color : String = "Rosita") : Circunferenc
     )
 
     fun area() : Float{
-        return
+        return (Math.PI * Math.pow(radio.toDouble(), 2.0)).toFloat()
     }
+
+    override fun toString(): String {
+        return "El radio del circulo es $radio, su longitud ${longitud()} y su area ${area()}."
+    }
+
+
 }

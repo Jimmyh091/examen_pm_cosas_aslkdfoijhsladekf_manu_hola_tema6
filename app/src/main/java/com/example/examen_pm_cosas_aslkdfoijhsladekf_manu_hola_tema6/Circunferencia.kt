@@ -9,10 +9,10 @@ open class Circunferencia (var radio : Float = 0f) {
     )
 
     fun longitud() : Float{
-        return (radio * radio * Math.PI).toFloat()
+        return (Math.pow(Math.PI, 2.0) * radio).toFloat()
     }
 
     override fun toString(): String {
-        return "El circulo tiene como radio $radio, y como longitud ${longitud()}"
+        return "El circulo tiene como radio $radio, y como longitud ${longitud()}."
     }
 }
