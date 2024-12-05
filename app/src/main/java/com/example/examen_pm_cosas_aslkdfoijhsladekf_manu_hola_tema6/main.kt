@@ -69,12 +69,12 @@ fun anios(lista : List<Videojuego>) : MutableList<Int>{
     return plataformas
 }
 
-fun mapaJuegos(lista : List<Videojuego>) : HashMap<String, HashMap<Int, Videojuego>>{
+fun mapaJuegos(lista : List<Videojuego>) : HashMap<String, HashMap<Int, List<Videojuego>>>{
 
     var plataformas = plataformas(lista)
-    var anios = anios(lista)
 
-    var mapa : HashMap<String, List<Videojuego>> = hashMapOf()
+    var mapa : HashMap<String, HashMap<Int, List<Videojuego>>> = hashMapOf()
+    var mapaAnios : HashMap<Int, List<Videojuego>>
 
     for (plataforma in plataformas){
 
@@ -86,18 +86,25 @@ fun mapaJuegos(lista : List<Videojuego>) : HashMap<String, HashMap<Int, Videojue
             }
         }
 
-        mapa.put(plataforma, listaAux)
+        var anios = anios(listaPlataformas)
+        mapaAnios  = hashMapOf()
+
+        for (anio in anios){
+
+            var listaAnios : MutableList<Videojuego> = mutableListOf()
+
+            for (juego in lista){
+                if (juego.anio == anio){
+                    listaAnios.add(juego)
+                }
+            }
+
+            mapaAnios.put(anio, listaAnios)
+        }
+
+        mapa.put(plataforma, mapaAnios)
     }
 
-    for (anio in anios){
-
-        var listaAnios : MutableList<Videojuego> = mutableListOf()
-
-    }
-
-    for (juego in listaPlataformas){
-        if (juego.anio =)
-    }
     return mapa
 }
 
